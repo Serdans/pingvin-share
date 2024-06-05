@@ -121,22 +121,20 @@ const Upload = ({
   };
 
   const showCreateUploadModalCallback = (files: FileUpload[]) => {
+    const generatedLink = Buffer.from(Math.random().toString(), "utf8")
+    .toString("base64")
+    .substr(10, 7);
+
     setFiles(files);
-    showCreateUploadModal(
-      modals,
-      {
-        isUserSignedIn: user ? true : false,
-        isReverseShare,
-        appUrl: config.get("general.appUrl"),
-        allowUnauthenticatedShares: config.get(
-          "share.allowUnauthenticatedShares",
-        ),
-        enableEmailRecepients: config.get("email.enableShareEmailRecipients"),
-        maxExpirationInHours: config.get("share.maxExpiration"),
+    uploadFiles({
+      id: generatedLink,
+      recipients: [],
+      expiration: config.get("share.maxExpiration"),
+      security: {
+        password: undefined,
+        maxViews: undefined,
       },
-      files,
-      uploadFiles,
-    );
+    }, files);
   };
 
   useEffect(() => {

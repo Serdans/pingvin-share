@@ -23,7 +23,7 @@ export const translateOutsideContext = () => {
     {
       locale,
       messages: i18nUtil.getLocaleByCode(locale)?.messages,
-      defaultLocale: "en",
+      defaultLocale: "nl-BE",
     },
     cache,
   );
