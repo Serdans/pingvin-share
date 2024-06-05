@@ -129,7 +129,7 @@ const Upload = ({
     uploadFiles({
       id: generatedLink,
       recipients: [],
-      expiration: config.get("share.maxExpiration"),
+      expiration: "1970-01-01T00:00:00.000Z",
       security: {
         password: undefined,
         maxViews: undefined,
