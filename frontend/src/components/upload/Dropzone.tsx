@@ -53,7 +53,6 @@ const Dropzone = ({
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
-        accept={[...IMAGE_MIME_TYPE, MIME_TYPES.mp4]}
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
         onDrop={(files: FileUpload[]) => {
