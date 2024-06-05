@@ -1,5 +1,5 @@
 import { Button, Center, createStyles, Group, Text } from "@mantine/core";
-import { Dropzone as MantineDropzone } from "@mantine/dropzone";
+import { Dropzone as MantineDropzone, IMAGE_MIME_TYPE, MIME_TYPES } from "@mantine/dropzone";
 import { ForwardedRef, useRef } from "react";
 import { TbCloudUpload, TbUpload } from "react-icons/tb";
 import { FormattedMessage } from "react-intl";
@@ -53,6 +53,7 @@ const Dropzone = ({
         onReject={(e) => {
           toast.error(e[0].errors[0].message);
         }}
+        accept={[...IMAGE_MIME_TYPE, MIME_TYPES.mp4]}
         disabled={isUploading}
         openRef={openRef as ForwardedRef<() => void>}
         onDrop={(files: FileUpload[]) => {
